@@ -169,7 +169,6 @@ personal API key, which is individual and cannot be shared.
 |---|---|---|
 | `data/flightlist/` | `fl_YYYYMM.parquet` — SBSP departures by month, from OpenSky (12 files, 3.3 MB) | No — license |
 | `data/vra/` | `VRA_YYYYMM.csv` — monthly ANAC VRA records (268 MB) | No — size |
-| `redemet/` | REDEMET API exploration notebooks (satellite, SIGWX, STSC) and the raw METAR for the year (11 MB) | No — API key |
 
 ### To reproduce
 
