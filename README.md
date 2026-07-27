@@ -1,6 +1,6 @@
 # Tempo de taxi do aeroporto de São Paulo/Congonhas (SBSP-CGH)
 
-**Em desenvolvimento** · TCC da pós-graduação em Data Science and Analytics (USP)
+**Em desenvolvimento** · TCC da pós-graduação em Data Science and Analytics (USP/Esalq)
 
 *[English version below](#taxi-time-at-são-paulocongonhas-airport-sbsp-cgh)*
 
