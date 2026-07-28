@@ -15,6 +15,26 @@ ANAC e METAR de SBSP fornecido pela REDEMET.
 
 ---
 
+## Notebooks
+
+O pipeline está nos notebooks numerados (execute na ordem). Os de coleta (`0_x`)
+regeneram as bases; os de análise (`1`–`4`) constroem e modelam o taxi-out. Os
+notebooks `5`–`9` (multinível, diagnóstico, ferramenta, modelos alternativos e
+comparação stepwise) serão publicados adiante.
+
+| Notebook | O que faz |
+|---|---|
+| `0_1_download_flightlist` | Baixa as decolagens de SBSP em 2025 da OpenSky (Trino SQL), um parquet por mês. |
+| `0_2_download_var` | Baixa os CSVs mensais do VRA da ANAC. |
+| `0_3_download_metar` | Baixa e decodifica os METAR de SBSP (API da REDEMET + MetPy). |
+| `0_4_statisticas_cgh` | Relevância de Congonhas: participação nas decolagens nacionais de 2025 (VRA/ANAC). |
+| `1_taxi_out_creation_dataframe` | Reconstrói o taxi-out por voo cruzando ADS-B (decolagem) e VRA (partida real). |
+| `2_features_creation_dataframe` | Consolida as features de calendário e meteorologia disponíveis à tripulação e ao despacho. |
+| `3_eda_taxi_out` | Análise exploratória do taxi-out. |
+| `4_modelo_ols_dummies` | Regressão OLS em escala logarítmica com variáveis indicadoras (modelo de referência). |
+
+---
+
 ## Dados: como foram extraídos e por que não estão neste repositório
 
 O estudo cruza três fontes públicas independentes. **Nenhuma das bases está
@@ -105,6 +125,24 @@ Models taxi-out — from the start of ground movement to takeoff — as a functi
 of calendar (month, weekday, time-of-day block, holidays) and weather in 2025.
 The dataset joins three public sources: ADS-B from the OpenSky Network, ANAC's
 VRA records, and METAR for SBSP provided by REDEMET.
+
+## Notebooks
+
+The pipeline lives in the numbered notebooks (run them in order). The collection
+notebooks (`0_x`) rebuild the datasets; the analysis notebooks (`1`–`4`) build and
+model taxi-out. Notebooks `5`–`9` (multilevel, diagnostics, tool, alternative
+models, and stepwise comparison) will be published later.
+
+| Notebook | What it does |
+|---|---|
+| `0_1_download_flightlist` | Downloads SBSP 2025 departures from OpenSky (Trino SQL), one parquet per month. |
+| `0_2_download_var` | Downloads ANAC's monthly VRA CSVs. |
+| `0_3_download_metar` | Downloads and decodes SBSP METARs (REDEMET API + MetPy). |
+| `0_4_statisticas_cgh` | Congonhas relevance: share of national departures in 2025 (VRA/ANAC). |
+| `1_taxi_out_creation_dataframe` | Rebuilds per-flight taxi-out by joining ADS-B (takeoff) and VRA (off-block). |
+| `2_features_creation_dataframe` | Consolidates the calendar and weather features available to crew and dispatch. |
+| `3_eda_taxi_out` | Exploratory analysis of taxi-out. |
+| `4_modelo_ols_dummies` | Log-scale OLS regression with dummy variables (baseline model). |
 
 ## Data: how it was extracted and why it is not in this repository
 
